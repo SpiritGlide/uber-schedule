@@ -1,0 +1,62 @@
+{
+    "Title": "Example Schedule",
+    "Schedule": {
+        "IsEvenWeek": true,
+        "Week": [
+            {
+                "Name": "Monday",
+                "Number": "2023-05-15T00:00:00Z",
+                "IsMilitary": false,
+                "Lessons": [
+                    {
+                        "TimeBegin": "2023-05-15T08:00:00Z",
+                        "TimeEnd": "2023-05-15T09:30:00Z",
+                        "IsBreak": false,
+                        "IsNow": false,
+                        "Name": "Math",
+                        "WhereIs": 101,
+                        "WhoTeaches": "Professor Johnson",
+                        "TeacherBio": "PhD in Mathematics"
+                    },
+                    {
+                        "TimeBegin": "2023-05-15T09:45:00Z",
+                        "TimeEnd": "2023-05-15T11:15:00Z",
+                        "IsBreak": false,
+                        "IsNow": false,
+                        "Name": "Physics",
+                        "WhereIs": 102,
+                        "WhoTeaches": "Professor Smith",
+                        "TeacherBio": "PhD in Physics"
+                    }
+                ]
+            },
+            {
+                "Name": "Tuesday",
+                "Number": "2023-05-16T00:00:00Z",
+                "IsMilitary": false,
+                "Lessons": [
+                    {
+                        "TimeBegin": "2023-05-16T08:00:00Z",
+                        "TimeEnd": "2023-05-16T09:30:00Z",
+                        "IsBreak": false,
+                        "IsNow": false,
+                        "Name": "Chemistry",
+                        "WhereIs": 103,
+                        "WhoTeaches": "Professor Davis",
+                        "TeacherBio": "PhD in Chemistry"
+                    },
+                    {
+                        "TimeBegin": "2023-05-16T09:45:00Z",
+                        "TimeEnd": "2023-05-16T11:15:00Z",
+                        "IsBreak": false,
+                        "IsNow": false,
+                        "Name": "Biology",
+                        "WhereIs": 104,
+                        "WhoTeaches": "Professor Martinez",
+                        "TeacherBio": "PhD in Biology"
+                    }
+                ]
+            }
+        ]
+    }
+}
