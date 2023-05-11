@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"text/template"
 	"time"
 )
 
@@ -13,14 +14,16 @@ type LessonData struct {
 	TimeBegin time.Time `json:"TimeBegin"`
 	TimeEnd   time.Time `json:"TimeEnd"`
 
-	IsBreak bool `json:"IsBreak"`
-	IsNow   bool `json:"IsNow"`
+	IsLecture bool `json:"IsLecture"`
+	IsBreak   bool `json:"IsBreak"`
+	IsNow     bool `json:"IsNow"`
 
 	Name    string `json:"Name"`
 	WhereIs int    `json:"WhereIs"`
 
-	WhoTeaches string `json:"WhoTeaches"`
-	TeacherBio string `json:"TeacherBio"`
+	WhoTeaches       string `json:"WhoTeaches"`
+	TeacherBio       string `json:"TeacherBio"`
+	TeacherPhotoPath string `json:"TeacherPhotoPath"`
 }
 
 type DayData struct {
@@ -28,18 +31,22 @@ type DayData struct {
 	Number time.Time    `json:"Number"`
 
 	IsMilitary bool `json:"IsMilitary"`
+	IsHoliday  bool `json:"IsHoliday"`
 
-	Lessons []LessonData `json:"Lessons"`
+	EvenWeekLessons    []LessonData `json:"EvenWeekLessons"`
+	NotEvenWeekLessons []LessonData `json:"NotEvenWeekLessons"`
 }
 
-type ScheduleData struct {
-	IsEvenWeek bool      `json:"IsEvenWeek"`
-	Week       []DayData `json:"Week"`
+type WeekData struct {
+	Number int  `json:"Number"`
+	IsEven bool `json:"IsEven"`
+
+	Week []DayData `json:"Week"`
 }
 
 type PageData struct {
-	Title    string       `json:"Title"`
-	Schedule ScheduleData `json:"Schedule"`
+	Title    string   `json:"Title"`
+	Schedule WeekData `json:"Schedule"`
 }
 
 func jsonParser() (output PageData) {
@@ -55,12 +62,26 @@ func jsonParser() (output PageData) {
 	return
 }
 
-func tableMaker(db PageData) (table string) {
+func lessonTimeFormatter(temp time.Time) string {
+	return temp.Format("15:04")
+}
 
+func dayTimeFormatter(temp time.Time) string {
+	return temp.Format("02.01.06")
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
+	layoutFunctions := template.FuncMap{
+		"lessonTimeFormatter": lessonTimeFormatter,
+		"dayTimeFormatter":    dayTimeFormatter,
+	}
 
+	data := jsonParser()
+	tmpl := template.Must(
+		template.New("").Funcs(layoutFunctions).
+			ParseFiles("templates/index_layout.html"))
+
+	tmpl.ExecuteTemplate(w, "index_layout.html", data)
 }
 
 func main() {

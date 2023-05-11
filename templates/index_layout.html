@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.Title}}</title>
+</head>
+<body>
+	
+    <h2>
+        {{if .Schedule.IsEven}}
+            Even week
+        {{else}}
+            Not even week
+        {{end}}
+    </h2>
+
+    {{range $.Schedule.Week}}
+    <table>
+        <tr>
+            <th colspan="4">{{.Number | dayTimeFormatter}}, {{.Name}}</th>
+        </tr>
+        
+        {{if .IsHoliday}}
+
+        <tr>
+            <th>We don't study on this day.</th>
+        </tr>
+        
+        {{else}}
+        <tr>
+            <th>Time</th>
+            <th>Name</th>
+            <th>Lecture</th>
+            <th>Hall</th>
+        </tr>
+
+        {{range .EvenWeekLessons}}
+        <tr>
+            <td>{{.TimeBegin | lessonTimeFormatter}} - {{.TimeEnd | lessonTimeFormatter}}</td>
+            <td>{{.Name}}</td>
+            <td>{{.IsLecture}}</td>
+            <td>{{.WhereIs}}</td>
+        </tr>
+        {{end}}
+
+        {{end}}
+    </table>
+    {{end}}
+
+</body>
+</html>

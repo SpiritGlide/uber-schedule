@@ -1,61 +1,123 @@
 {
-    "Title": "Example Schedule",
+    "Title": "Example",
     "Schedule": {
-        "IsEvenWeek": true,
+        "Number": 20,
+        "IsEven": true,
         "Week": [
             {
-                "Name": "Monday",
+                "Name": 1,
                 "Number": "2023-05-15T00:00:00Z",
                 "IsMilitary": false,
-                "Lessons": [
+                "IsHoliday": false,
+                "EvenWeekLessons": [
                     {
                         "TimeBegin": "2023-05-15T08:00:00Z",
                         "TimeEnd": "2023-05-15T09:30:00Z",
+                        "IsLecture": true,
                         "IsBreak": false,
                         "IsNow": false,
                         "Name": "Math",
                         "WhereIs": 101,
                         "WhoTeaches": "Professor Johnson",
-                        "TeacherBio": "PhD in Mathematics"
+                        "TeacherBio": "PhD in Mathematics",
+                        "TeacherPhotoPath": "/path/to/photo1.jpg"
                     },
                     {
                         "TimeBegin": "2023-05-15T09:45:00Z",
                         "TimeEnd": "2023-05-15T11:15:00Z",
+                        "IsLecture": false,
                         "IsBreak": false,
                         "IsNow": false,
                         "Name": "Physics",
                         "WhereIs": 102,
                         "WhoTeaches": "Professor Smith",
-                        "TeacherBio": "PhD in Physics"
+                        "TeacherBio": "PhD in Physics",
+                        "TeacherPhotoPath": "/path/to/photo2.jpg"
                     }
-                ]
+                ],
+                "NotEvenWeekLessons": []
             },
             {
-                "Name": "Tuesday",
+                "Name": 2,
                 "Number": "2023-05-16T00:00:00Z",
                 "IsMilitary": false,
-                "Lessons": [
+                "IsHoliday": false,
+                "EvenWeekLessons": [
                     {
                         "TimeBegin": "2023-05-16T08:00:00Z",
                         "TimeEnd": "2023-05-16T09:30:00Z",
+                        "IsLecture": true,
                         "IsBreak": false,
                         "IsNow": false,
                         "Name": "Chemistry",
                         "WhereIs": 103,
                         "WhoTeaches": "Professor Davis",
-                        "TeacherBio": "PhD in Chemistry"
+                        "TeacherBio": "PhD in Chemistry",
+                        "TeacherPhotoPath": "/path/to/photo3.jpg"
                     },
                     {
                         "TimeBegin": "2023-05-16T09:45:00Z",
                         "TimeEnd": "2023-05-16T11:15:00Z",
+                        "IsLecture": false,
                         "IsBreak": false,
                         "IsNow": false,
                         "Name": "Biology",
                         "WhereIs": 104,
                         "WhoTeaches": "Professor Martinez",
-                        "TeacherBio": "PhD in Biology"
+                        "TeacherBio": "PhD in Biology",
+                        "TeacherPhotoPath": "/path/to/photo4.jpg"
                     }
-                ]
+                ],
+                "NotEvenWeekLessons": []
+            },
+            {
+                "Name": 3,
+                "Number": "2023-05-17T00:00:00Z",
+                "IsMilitary": true,
+                "IsHoliday": true,
+                "EvenWeekLessons": [],
+                "NotEvenWeekLessons": []
+            },
+            {
+                "Name": 4,
+                "Number": "2023-05-18T00:00:00Z",
+                "IsMilitary": false,
+                "IsHoliday": true,
+                "EvenWeekLessons": [],
+                "NotEvenWeekLessons": []
+            },
+            {
+                "Name": 5,
+                "Number": "2023-05-19T00:00:00Z",
+                "IsMilitary": false,
+                "IsHoliday": false,
+                "EvenWeekLessons": [
+                    {
+                        "TimeBegin": "2023-05-19T08:00:00Z",
+                        "TimeEnd": "2023-05-19T09:30:00Z",
+                        "IsLecture": true,
+                        "IsBreak": false,
+                        "IsNow": false,
+                        "Name": "Computer Science",
+                        "WhereIs": 105,
+                        "WhoTeaches": "Professor Thompson",
+                        "TeacherBio": "PhD in Computer Science",
+                        "TeacherPhotoPath": "/path/to/photo5.jpg"
+                    },
+                    {
+                        "TimeBegin": "2023-05-19T09:45:00Z",
+                        "TimeEnd": "2023-05-19T11:15:00Z",
+                        "IsLecture": false,
+                        "IsBreak": false,
+                        "IsNow": false,
+                        "Name": "English Literature",
+                        "WhereIs": 106,
+                        "WhoTeaches": "Professor Anderson",
+                        "TeacherBio": "PhD in English Literature",
+                        "TeacherPhotoPath": "/path/to/photo6.jpg"
+                    }
+                ],
+                "NotEvenWeekLessons": []
             }
         ]
     }
