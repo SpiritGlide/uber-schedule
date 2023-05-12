@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="/static/styles/style.css">
+
     <title>{{.Title}}</title>
 </head>
 <body>
@@ -13,38 +15,39 @@
         {{end}}
     </h2>
 
-    {{range $.Schedule.Week}}
-    <table>
-        <tr>
-            <th colspan="4">{{.Number | dayTimeFormatter}}, {{.Name}}</th>
-        </tr>
-        
-        {{if .IsHoliday}}
+    <div id="weekTables">
+        {{range $.Schedule.Week}}
+            <table>
+                <tr>
+                    <th colspan="4">{{.Number | dayTimeFormatter}}, {{.Name}}</th>
+                </tr>
+                
+                {{if .IsHoliday}}
+                    <tr>
+                        <th>We don't study on this day.</th>
+                    </tr>
+                {{else}}
+                    <tr>
+                        <th>Time</th>
+                        <th>Name</th>
+                        <th>Lecture</th>
+                        <th>Hall</th>
+                    </tr>
 
-        <tr>
-            <th>We don't study on this day.</th>
-        </tr>
-        
-        {{else}}
-        <tr>
-            <th>Time</th>
-            <th>Name</th>
-            <th>Lecture</th>
-            <th>Hall</th>
-        </tr>
-
-        {{range .EvenWeekLessons}}
-        <tr>
-            <td>{{.TimeBegin | lessonTimeFormatter}} - {{.TimeEnd | lessonTimeFormatter}}</td>
-            <td>{{.Name}}</td>
-            <td>{{.IsLecture}}</td>
-            <td>{{.WhereIs}}</td>
-        </tr>
+                    {{if $.Schedule.IsEven}}
+                        {{range .EvenWeekLessons}}
+                            <tr>
+                                <td>{{.TimeBegin | lessonTimeFormatter}} - {{.TimeEnd | lessonTimeFormatter}}</td>
+                                <td>{{.Name}}</td>
+                                <td>{{.IsLecture}}</td>
+                                <td>{{.WhereIs}}</td>
+                            </tr>
+                        {{end}}
+                    {{end}}
+                {{end}}
+            </table>
         {{end}}
-
-        {{end}}
-    </table>
-    {{end}}
+    </div>
 
 </body>
 </html>

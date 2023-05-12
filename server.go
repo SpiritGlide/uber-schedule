@@ -85,6 +85,9 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	fileServer := http.FileServer(http.Dir("static"))
+
+	http.Handle("/static/", http.StripPrefix("/static/", fileServer))
 	http.HandleFunc("/", homeHandler)
 
 	fmt.Println("Listening port 1370...")
