@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#main {
+    flex: 1;
+    max-width: 1000px;
+    width: 100%;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
